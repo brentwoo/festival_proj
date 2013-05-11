@@ -20,7 +20,7 @@ _Download the source packges from here:_
 
 At minimum you need the Festival System source, lexicon distributions appropriate for desired voices, a speech database, and the Edinburgh Speech Tools Library. 
 
-The lexicons support different voices. CMU is required for American English voices, OALD is required for British English voices, and POSLEX is required for both BrE and AmE voices. (Note: OALD is only free for non-commercial use) 
+The lexicons support different voices. CMU is required for American English voices, OALD is required for British English voices, and POSLEX is required for both BrE and AmE voices. (Note: OALD is only free for non-commercial use) A list of all available voices is given here (http://festvox.org/docs/manual-1.4.3/festival_24.html#SEC97).
 
 For the default, simple American English male voice, get these files.
 
@@ -116,3 +116,17 @@ Remove the semicolon (uncomment) and change the voice to whichever you want. Mak
 
     (set! voice_default 'voice_cmu_us_slt_arctic_hts)
 
+## Check settings
+
+A list of currently defined phonesets (the list of sets that are used by currently loaded voices) is returned by the function
+
+    (PhoneSet.list)
+
+The name, phones, features and silences of the current phoneset may be accessedwith the function
+
+    (PhoneSet.description nil)
+
+If the argument to this function is a list, only those parts of the phoneset description named are returned. For example
+
+    (PhoneSet.description '(silences))
+    (PhoneSet.description '(silences phones))
