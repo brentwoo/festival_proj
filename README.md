@@ -5,7 +5,7 @@ Festival is a Speech Synthesis System, it uses Scheme.
 ## Installing
 
 
-*System Requirements:*
+_System Requirements:_
 
 * A UNIX machine
 * C++ compiler
@@ -13,20 +13,24 @@ Festival is a Speech Synthesis System, it uses Scheme.
 
 Mac OS 10.8 does not come out-of-the-box with a C++ compiler. In the App Store download XCode, and in the Preferences in the Downloads tab, install the Command Line Tools.
 
-*Download the source packges from here:*
+_Download the source packges from here:_
 
 * http://festvox.org/festival/downloads.html (North America)
 * http://www.cstr.ed.ac.uk/downloads/festival/2.1/ (Europe)
 
-At minimum you need the Festival System source, a lexicon distribution, a speech database, and the Edinburgh Speech Tools Library. For a quick start, without needing to configure anything, get these files.
+At minimum you need the Festival System source, lexicon distributions appropriate for desired voices, a speech database, and the Edinburgh Speech Tools Library. 
+
+The lexicons support different voices. CMU is required for American English voices, OALD is required for British English voices, and POSLEX is required for both BrE and AmE voices. (Note: OALD is only free for non-commercial use) 
+
+For the default, simple American English male voice, get these files.
 
 * festival-###-release.tar.gz
 * festlex_CMU.tar.gz
 * festlex_POSLEX.tar.gz
-* festvox_rab_diphone.tar.gz 
+* festvox_kallpc16k.tar.gz 
 * speech_tools-2.1-release.tar.gz
 
-Compile, using standard make procedure, the speech tools first, then the fest* files. In the folder where you would like to install Festival (e.g., `cd ~/festival):
+Compile, using standard make procedure, the speech tools first, then the fest* files. In the folder where you would like to install Festival (e.g., `cd ~/festival`):
 
     $ tar xzvf speech_tools-2.1-release.tar.gz
     $ cd speech_tools
@@ -50,26 +54,65 @@ It would be a good idea to add this to your PATH.
 
 ## Quick start
 
+* To exit the program:
+
+    > (exit)
+
+### Get it to talk
+
 * Set the variable `utt1`
 
-`(set! utt1 (Utterance Text "Hello world"))`
+    > (set! utt1 (Utterance Text "Hello world"))
 
 * Synthesizes the utterance
 
-`(utt.synth utt1)`
+    > (utt.synth utt1)
 
-* Actually pronounces it. You should hear it
+* This actually pronounces it. You should hear the content of `utt1` after typing:
 
-`(utt.play utt1)`
+    > (utt.play utt1)
 
-* Alternatively use the Say command
+* _The above three commands are condensed into one function_:
 
-`(Say Text "your text here")`
+    > (SayText "your text here")
 
-* read in a text file
+* Other quick speaking commands
 
-    $ festival --tts <file>`
+    > (intro)
+    $ festival examples/saytime
 
-* read in a file, save as sound
+### First commands
+
+* Read in a text file
+
+    $ festival --tts <file>
+
+* Read in a text file, save as sound
 
     $ text2wave <file> -o <output.wav>
+
+### Switching voices
+
+All installed voices are found in `festival/lib/voices/`. They are organized by language/region. In the English folder you should find `kal_diphone`, the default voice. To change the voice while in Festival:
+
+    > (voice_VOICE_NAME)
+
+    > (voice_cmu_us_awb_cg)
+    > (SayText "I am Canadian.")
+
+If you attempt to change the voice to one that is not installed, you will get the appropriate error message:
+
+    festival> (voice_rab_diphone)
+    SIOD ERROR: could not open file /Users/home/festival/festival/lib/dicts/oald/oaldlex.scm
+    closing a file left open: /Users/home/festival/festival/lib/voices/english/rab_diphone/festvox/rab_diphone.scm
+
+This this because I did not install the OALD lexicon, so I cannot use the British voices. 
+
+To change the default voice, open up `/festival/lib/siteinit.scm`. You will find a line that looks like
+
+    ;(set! voice_default 'voice_cmu_us_awb_arctic_hts)
+
+Remove the semicolon (uncomment) and change the voice to whichever you want. Make sure that the voice and its required lexicon are installed correctly otherwise Festival will crash on startup.
+
+    (set! voice_default 'voice_cmu_us_slt_arctic_hts)
+
