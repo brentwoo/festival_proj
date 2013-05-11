@@ -18,32 +18,35 @@ Mac OS 10.8 does not come out-of-the-box with a C++ compiler. In the App Store d
 * http://festvox.org/festival/downloads.html (North America)
 * http://www.cstr.ed.ac.uk/downloads/festival/2.1/ (Europe)
 
-For a quick start, without needing to configure anything, get these files.
+At minimum you need the Festival System source, a lexicon distribution, a speech database, and the Edinburgh Speech Tools Library. For a quick start, without needing to configure anything, get these files.
 
-`festlex_CMU.tar.gz`
-`festlex_POSLEX.tar.gz`
-`festvox_kallpc16k.tar.gz`
-`speech_tools-2.1-release.tar.gz`
+* festival-###-release.tar.gz
+* festlex_CMU.tar.gz
+* festlex_POSLEX.tar.gz
+* festvox_rab_diphone.tar.gz 
+* speech_tools-2.1-release.tar.gz
 
 Compile, using standard make procedure, the speech tools first, then the fest* files. In the folder where you would like to install Festival (e.g., `cd ~/festival):
 
-`$ tar xzvf speech_tools-2.1-release.tar.gz`
-`$ cd speech_tools`
-`$ ./configure`
-`$ make all`
-`$ sudo make install`
+    $ tar xzvf speech_tools-2.1-release.tar.gz
+    $ cd speech_tools
+    $ ./configure
+    $ make all
+    $ sudo make install
 
 Back in the main festival directory (`cd ~/festival`) unpack and compile the remaining fest* files with the same sequence of commands:
 
-`$ tar xzvf festlex_CMU.tar.gz`
-`$ cd festival`
-`$ ./configure`
-`$ make all`
-`$ sudo make install`
+    $ tar xzvf festlex_CMU.tar.gz
+    $ cd festival
+    $ ./configure
+    $ make all
+    $ sudo make install
 
 That should be it. in the festival/festival directory, run the program by typing:
 
 `$ bin/festival`
+
+It would be a good idea to add this to your PATH.
 
 ## Quick start
 
@@ -53,11 +56,11 @@ That should be it. in the festival/festival directory, run the program by typing
 
 * Synthesizes the utterance
 
-`(utt.synth utt1)
+`(utt.synth utt1)`
 
 * Actually pronounces it. You should hear it
 
-`(utt.play utt1)
+`(utt.play utt1)`
 
 * Alternatively use the Say command
 
@@ -65,8 +68,8 @@ That should be it. in the festival/festival directory, run the program by typing
 
 * read in a text file
 
-`$ festival --tts <file>`
+    $ festival --tts <file>`
 
 * read in a file, save as sound
 
-`$ text2wave <file> -o <output.wav>`
+    $ text2wave <file> -o <output.wav>
