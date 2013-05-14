@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE SABLE PUBLIC "-//SABLE//DTD SABLE speech mark up//EN" 
+      "Sable.v0_2.dtd"
+[]>
+<SABLE>
+<SPEAKER NAME="male1">
+
+Can I sing a song for you?
+<BREAK LEVEL="large" />
+
+<RATE SPEED="-30%">
+twinkle
+<PITCH BASE="+50%">twinkle</PITCH>
+<PITCH BASE="+65%">little</PITCH>
+<PITCH BASE="+50%">star</PITCH> <BREAK />
+
+<PITCH BASE="+33%">how I</PITCH>
+<PITCH BASE="+23%">wonder</PITCH>
+<PITCH BASE="+10%">what you</PITCH>
+<PITCH BASE="+2%">are</PITCH>
+</RATE>
+
+Thank you.
+
+<RATE SPEED="-60%"><PITCH BASE="+80%">Thank you.</PITCH></RATE>
+
+<RATE SPEED="+90%"><PITCH BASE="-50%">Thank you.</PITCH></RATE>
+
+<BREAK LEVEL="large" />
+
+
+Good morning <BREAK /> My name is Stuart, which is spelled <BREAK />
+<RATE SPEED="-50%">
+<SAYAS MODE="literal">stuart</SAYAS> </RATE>
+though some people pronounce it 
+<PRON SUB="stoo art">stuart</PRON>.  My telephone number
+is <SAYAS MODE="literal">2787</SAYAS>.
+
+In <SAYAS MODE="date">2013</SAYAS>, I worked in Ypsilanti, 
+<RATE SPEED="+30%">but no one can pronounce that</RATE>.
+
+Without his <PITCH BASE="+30%">penguin</PITCH>, <PITCH BASE="-40%"><RATE SPEED="-20%">which he left at home,</RATE></PITCH>
+he could not enter the restaurant.
+
+
+</SPEAKER>
+</SABLE>

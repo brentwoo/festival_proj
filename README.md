@@ -48,7 +48,7 @@ Back in the main festival directory (`cd ~/festival`) unpack and compile the rem
 
 That should be it. in the festival/festival directory, run the program by typing:
 
-`$ bin/festival`
+    $ bin/festival
 
 It would be a good idea to add this to your PATH.
 
@@ -56,17 +56,17 @@ It would be a good idea to add this to your PATH.
 
 * To exit the program:
 
-    > (exit)
+    \> (exit)
 
 ### Get it to talk
 
 * Set the variable `utt1`
 
-    > (set! utt1 (Utterance Text "Hello world"))
+    \> (set! utt1 (Utterance Text "Hello world"))
 
 * Synthesizes the utterance
 
-    > (utt.synth utt1)
+    \> (utt.synth utt1)
 
 * This actually pronounces it. You should hear the content of `utt1` after typing:
 
