@@ -54,40 +54,40 @@ It would be a good idea to add this to your PATH.
 
 ## Quick start
 
-* To exit the program:
+To exit Festival:
 
-    \> (exit)
+    (exit)
 
 ### Get it to talk
 
-* Set the variable `utt1`
+Set the variable `utt1`
 
-    \> (set! utt1 (Utterance Text "Hello world"))
+    (set! utt1 (Utterance Text "Hello world"))
 
-* Synthesizes the utterance
+Synthesizes the utterance
 
-    \> (utt.synth utt1)
+    (utt.synth utt1)
 
-* This actually pronounces it. You should hear the content of `utt1` after typing:
+This actually pronounces it. You should hear the content of `utt1` after typing:
 
-    > (utt.play utt1)
+    (utt.play utt1)
 
-* _The above three commands are condensed into one function_:
+**The above three commands are condensed into one function**:
 
-    > (SayText "your text here")
+    (SayText "your text here")
 
-* Other quick speaking commands
+Other quick speaking commands
 
-    > (intro)
+    (intro)
     $ festival examples/saytime
 
 ### First commands
 
-* Read in a text file
+Read in a text file
 
     $ festival --tts <file>
 
-* Read in a text file, save as sound
+Read in a text file, save as sound
 
     $ text2wave <file> -o <output.wav>
 
