@@ -1,0 +1,78 @@
+Making new language/voice
+
+Sources:
+http://festvox.org/docs/manual-1.4.3/festival_24.html#SEC98
+http://www.festvox.org/bsv/book1.html
+http://www.festvox.org/bsv/c3619.html
+
+http://www.festvox.org/bsv/c3456.html - "tutorial/walkthrough for Japanese diphone"
+
+Minimum parts:
+
+* Phone set
+* Token processing rules (numbers etc)
+* Prosodic phrasing method
+* Word pronunciation (lexicon and/or letter-to-sound rules)
+* Intonation (accents and F0 contour)
+* Durations
+* Waveform synthesizer
+
+> The general method for defining a new voice is to define the parameters for all the various sub-parts e.g. phoneset, duration parameter intonation parameters etc., then defined a function of the form voice_NAME which when called will actually select the voice.
+
+> Voice name convention
+> institution name _ ISO _ speaker initials
+> (e.g., cmu_us_awb)
+
+## Requirements
+
+Along with Festival and the Edinburgh Speech Tools, you will need [festvox](http://www.festvox.org/download.html).
+
+
+
+
+## Phone set
+
+An example can be seen in `festival/lib/radio_phones.scm`.
+
+Select an alternate phone set with the command `PhoneSet.select`.
+
+Here is a budding Spanish phone set example, with just two vowels (the phone '#' is silence):
+
+    (defPhoneSet
+      spanish
+      ;;;  Phone Features
+      (;; vowel or consonant
+       (vc + -)  
+       ;; vowel length: short long diphthong schwa
+       (vlng s l d a 0)
+       ;; vowel height: high mid low
+       (vheight 1 2 3 -)
+       ;; vowel frontness: front mid back
+       (vfront 1 2 3 -)
+       )
+      ;; Phone set members (features are not! set properly)
+      (
+       (#  - 0 - - )
+       (a  + l 3 1 )
+       (u  + l 1 3 )
+      )
+    )
+    (PhoneSet.silences '(#))
+
+A phone set definition has the form
+
+    (defPhoneSet
+      NAME
+      FEATUREDEFS
+      PHONEDEFS )
+    (PhoneSet.silences '(#))
+
+## Lexicons
+
+Create a new lexicon
+
+    (lex.create "newname")
+
+Declare a phone set for the lexicon.
+
+    (lex.set.phoneset "mrpa")

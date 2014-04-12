@@ -1,0 +1,20 @@
+BENGLA NOTES
+
+Festival does not support Unicode directly, so everything must first be transliterated into ASCII
+
+Ideally get speech from a native consultant, but Forvo has many sound samples to get started. Files on Forvo have a Creative Commons license (CC BY-NC-SA 3.0).
+
+
+Pronunciation lexicon
+
+* Festival prefers elaborate lexicon over LTS rules.
+* Letter-to-Sound (LTS) is very computationally intensive (in the Bangla language)
+* But must develop LTS (or Grapheme-to-phoneme (G2P)) rules to handle loanwords/words not explicitly in lexicon.
+
+Speech Database / Waveform Synthesis
+ 
+* Concatenative synthesis is the most natural sound. 3 Techniques: diphone, unit selection, multisyn-unit selection.
+** Diphone is unnatural, unit selection is more natural.
+** Drawback of others is that a lot of data is needed. Approx 500-900 recorded utterances.
+* Identify all features of phonemes and total number of phones. Using articulatory technique or acoustic technique. Acoustic technique is better.
+* This implementation excluded diphthongs. 
